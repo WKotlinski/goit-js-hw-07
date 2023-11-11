@@ -1,4 +1,26 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 // Change code below this line
+const ul = document.querySelector(".gallery");
 
-console.log(galleryItems);
+galleryItems.map(({ preview, original, description }) => {
+  const li = document.createElement("li");
+  li.innerHTML = `
+  <div>
+      <a class="gallery__item" href="${original}">
+      <img class="gallery__image" src="${preview}" alt="${description}" />
+      </a>
+  </div>`;
+
+  ul.insertAdjacentElement("beforeend", li);
+});
+
+const openModal = function (event) {
+  event.preventDefault();
+  const target = event.target;
+  if (!target.classList.contains("gallery__image")) {
+    return;
+  }
+  new SimpleLightbox(".gallery a", {});
+};
+
+ul.addEventListener("click", openModal);
