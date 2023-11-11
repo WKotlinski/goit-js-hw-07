@@ -20,7 +20,12 @@ const openModal = function (event) {
   if (!target.classList.contains("gallery__image")) {
     return;
   }
-  new SimpleLightbox(".gallery a", {});
+  new SimpleLightbox(".gallery a", {
+    captions: true,
+    captionSelector: "img",
+    captionsData: "alt",
+    captionDelay: "250ms",
+  });
 };
 
 ul.addEventListener("click", openModal);
