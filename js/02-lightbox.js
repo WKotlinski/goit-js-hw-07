@@ -14,18 +14,8 @@ galleryItems.map(({ preview, original, description }) => {
   ul.insertAdjacentElement("beforeend", li);
 });
 
-const openModal = function (event) {
-  event.preventDefault();
-  const target = event.target;
-  if (!target.classList.contains("gallery__image")) {
-    return;
-  }
-  new SimpleLightbox(".gallery a", {
-    captions: true,
-    captionSelector: "img",
-    captionsData: "alt",
-    captionDelay: "250ms",
-  });
-};
-
-ul.addEventListener("click", openModal);
+new SimpleLightbox(".gallery a", {
+  captions: true,
+  captionsData: "alt",
+  captionDelay: 250,
+});
